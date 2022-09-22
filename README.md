@@ -1,6 +1,8 @@
 自用精简固件，主要是出国和穿透 L大源的原生自动编译（没有任何修改）
 
-插件包含 出国 ssplus+,passwall,openclash
+插件包含 
+      
+      出国 ssplus+,passwall,openclash
 
       穿透 frp,nps,ddnsto,zerotier,wireguard
      
