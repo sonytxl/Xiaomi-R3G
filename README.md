@@ -12,11 +12,9 @@
      
 每月不定时更新，欢迎使用。
  
- 192.168.51.1
- 
- root
- 
- password
+    192.168.51.1
+    root
+    password
 
 **English** | [中文](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
