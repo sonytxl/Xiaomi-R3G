@@ -6,7 +6,7 @@
       
       出国 ssplus+,passwall,openclash
 
-      穿透 frp,nps,ddnsto,zerotier,wireguard
+      穿透 frp,nps,ddnsto,zerotier,wireguard,tailscale
      
       其他 TTYD终端，usb打印，网络唤醒
      
