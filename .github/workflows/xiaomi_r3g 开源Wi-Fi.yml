@@ -124,8 +124,15 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
+        # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间
         cd openwrt/bin/targets/*/*
         rm -rf packages
+        rm -rf *.buildinfo
+        rm -rf profiles.json
+        rm -rf *pbboot*
+        rm -rf *breed*
+        rm -rf *.manifest
+        rm -rf sha256sums
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -141,6 +148,9 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")">> $GITHUB_OUTPUT
+        echo "名称：Xiaomi_r3g 开源Wi-Fi lede23版本 自用外贸版" >> release.txt
+        echo "默认网关：192.168.51.1" >> release.txt
+        echo "默认用户和密码：root password" >> release.txt
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
