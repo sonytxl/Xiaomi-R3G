@@ -67,7 +67,7 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         rm -rf target/linux/ramips/patches-5.4/102-mt7621-fix-cpu-clk-add-clkdev.patch
-        wget https://github.com/sonytxl/mi-360-asus/blob/main/102-mt7621-fix-cpu-clk-add-clkdev.patch target/linux/ramips/patches-5.4
+        wget https://github.com/sonytxl/xiaomiR3G-1/blob/main/102-mt7621-fix-cpu-clk-add-clkdev.patch target/linux/ramips/patches-5.4
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds 更新软件源
