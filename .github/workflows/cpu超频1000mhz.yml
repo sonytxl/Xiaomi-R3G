@@ -82,11 +82,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    - name: 更换超频文件 超频1000mhz
-      run: |
-        rm -rf target/linux/ramips/patches-5.4/102-mt7621-fix-cpu-clk-add-clkdev.patch
-        wget https://github.com/sonytxl/xiaomiR3G-1/blob/main/102-mt7621-fix-cpu-clk-add-clkdev.patch -P target/linux/ramips/patches-5.4
-
     - name: SSH connection to Actions 连接开始
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -102,6 +97,11 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+
+    - name: 更换超频文件 超频1000mhz
+      run: |
+        rm -rf target/linux/ramips/patches-5.4/102-mt7621-fix-cpu-clk-add-clkdev.patch
+        wget https://github.com/sonytxl/xiaomiR3G-1/blob/main/102-mt7621-fix-cpu-clk-add-clkdev.patch -P target/linux/ramips/patches-5.4
 
     - name: Compile the firmware 编译固件
       id: compile
