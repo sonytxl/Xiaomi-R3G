@@ -61,11 +61,6 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: 更换超频文件 超频1000mhz
-      run: |
-        rm -rf target/linux/ramips/patches-5.4/102-mt7621-fix-cpu-clk-add-clkdev.patch
-        wget https://github.com/sonytxl/xiaomiR3G-1/blob/main/102-mt7621-fix-cpu-clk-add-clkdev.patch -P target/linux/ramips/patches-5.4
-
     - name: Load custom feeds 加载软件源
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -78,7 +73,7 @@ jobs:
 
     - name: Install feeds 安装软件源
       run: cd openwrt && ./scripts/feeds install -a
-
+     
     - name: Load custom configuration 加载自定义配置
       run: |
         [ -e files ] && mv files openwrt/files
@@ -86,6 +81,11 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+
+    - name: 更换超频文件 超频1000mhz
+      run: |
+        rm -rf target/linux/ramips/patches-5.4/102-mt7621-fix-cpu-clk-add-clkdev.patch
+        wget https://github.com/sonytxl/xiaomiR3G-1/blob/main/102-mt7621-fix-cpu-clk-add-clkdev.patch -P target/linux/ramips/patches-5.4
 
     - name: SSH connection to Actions 连接开始
       uses: P3TERX/ssh2actions@v1.0.0
