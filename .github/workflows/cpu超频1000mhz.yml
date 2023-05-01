@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: cpu超频1000
+name: cpu超频1000mhz
 
 on:
   repository_dispatch:
