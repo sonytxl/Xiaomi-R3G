@@ -21,3 +21,6 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 
 # 删除原默认主题
 #  rm -rf package/lean/luci-theme-bootstrap
+
+# Modify hostname
+#sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
